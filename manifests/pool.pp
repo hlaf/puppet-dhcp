@@ -14,6 +14,8 @@ define dhcp::pool (
   $mtu              = undef,
   $domain_name      = '',
   $ignore_unknown   = undef,
+  $allow_classes    = undef,
+  $deny_classes     = undef,    
 ) {
   if $mtu {
     validate_integer($mtu)

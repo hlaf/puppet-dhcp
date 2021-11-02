@@ -19,6 +19,20 @@ subnet <%= @network %> netmask <%= @mask %> {
 <% elsif @range != '' -%>
     range <%= @range %>;
 <% end -%>
+<% if @allow_classes and @allow_classes.is_a? Array -%>
+<% @allow_classes.each do |class_name| -%>
+    allow members of "<%= class_name %>";
+<% end -%>
+<% elsif @allow_classes.to_s != '' -%>
+    allow members of "<%= @allow_classes %>";
+<% end -%>
+<% if @deny_classes and @deny_classes.is_a? Array -%>
+<% @deny_classes.each do |class_name| -%>
+    deny members of "<%= class_name %>";
+<% end -%>
+<% elsif @deny_classes.to_s != '' -%>
+    deny members of "<%= @deny_classes %>";
+<% end -%>
   }
 <% end -%>
 
